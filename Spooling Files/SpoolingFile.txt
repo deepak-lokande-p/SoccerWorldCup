@@ -1,0 +1,90 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| soccer             |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> use soccer;
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> create table country(
+    -> Country_Name Varchar(20) not null,
+    -> Population decimal(10,2),
+    -> No_of_Worldcup_won int,
+    -> Manager varchar (20),
+    -> primary key(Country_Name)
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table players(
+    -> Player_id int not null,
+    -> Name varchar (40),
+    -> Fname varchar (20),
+    -> Lname varchar (35),
+    -> DOB date,
+    -> Country varchar(20),
+    -> Height int,
+    -> Club varchar(30),
+    -> Position varchar(10),
+    -> Caps_for_Country int,
+    -> IS_CAPTAIN Boolean NOT NULL DEFAULT FALSE,
+    -> primary key(Player_id),
+    -> foreign key (Country) references country (Country_Name) ON UPDATE CASCADE ON DELETE SET NULL
+    -> );
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> create table match_results(
+    -> Match_id int not null,
+    -> Date_of_Match date,
+    -> Start_Time_Of_Match time,
+    -> Team1 varchar(20),
+    -> Team2 varchar(20),
+    -> Team1_score int,
+    -> Team2_score int,
+    -> Stadium_Name varchar(35),
+    -> Host_City varchar(20),
+    -> primary key(Match_id),
+    -> foreign key (Team1) references country (Country_Name) ON UPDATE CASCADE ON DELETE SET NULL,
+    -> foreign key (Team2) references country (Country_Name) ON UPDATE CASCADE ON DELETE SET NULL
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> create table player_cards(
+    -> Player_id int not null,
+    -> Yellow_Cards int,
+    -> Red_Cards int,
+    -> foreign key (Player_id) references players (Player_id) ON DELETE CASCADE
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> create table player_assists_goals(
+    -> Player_id int not null,
+    -> No_of_Matches int,
+    -> Goals int,
+    -> Assists int,
+    -> Minutes_Played int,
+    -> foreign key (Player_id) references players (Player_id) ON DELETE CASCADE
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> show tables;
++----------------------+
+| Tables_in_soccer     |
++----------------------+
+| country              |
+| match_results        |
+| player_assists_goals |
+| player_cards         |
+| players              |
++----------------------+
+5 rows in set (0.02 sec)
+
+mysql> notee
