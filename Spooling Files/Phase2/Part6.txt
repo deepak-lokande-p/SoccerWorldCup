@@ -1,0 +1,45 @@
+mysql> insert into country values('India', 530.5, 3, 'Sunil Chhetri');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from country where country_name = 'india';
++--------------+------------+--------------------+---------------+
+| Country_Name | Population | No_of_Worldcup_won | Manager       |
++--------------+------------+--------------------+---------------+
+| India        |     530.50 |                  3 | Sunil Chhetri |
++--------------+------------+--------------------+---------------+
+1 row in set (0.00 sec)
+
+mysql> insert into players values (123456, 'Deepak Prakash', 'Deepak', 'Prakash', '1992-05-26', 'India', 190, 'BFC', 'Midfielder', 4, 1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from players where player_id = 123456;
++-----------+----------------+--------+---------+------------+---------+--------+------+------------+------------------+------------+
+| Player_id | Name           | Fname  | Lname   | DOB        | Country | Height | Club | Position   | Caps_for_Country | IS_CAPTAIN |
++-----------+----------------+--------+---------+------------+---------+--------+------+------------+------------------+------------+
+|    123456 | Deepak Prakash | Deepak | Prakash | 1992-05-26 | India   |    190 | BFC  | Midfielder |                4 |          1 |
++-----------+----------------+--------+---------+------------+---------+--------+------+------------+------------------+------------+
+1 row in set (0.00 sec)
+
+mysql> insert into match_results values (65, '2018-01-01', '15:00:00', 'India', 'Brazil', 3, 1, 'Motera', 'Ahmedabad');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from match_results where match_id = 65;
++----------+---------------+---------------------+-------+--------+-------------+-------------+--------------+-----------+
+| Match_id | Date_of_Match | Start_Time_Of_Match | Team1 | Team2  | Team1_score | Team2_score | Stadium_Name | Host_City |
++----------+---------------+---------------------+-------+--------+-------------+-------------+--------------+-----------+
+|       65 | 2018-01-01    | 15:00:00            | India | Brazil |           3 |           1 | Motera       | Ahmedabad |
++----------+---------------+---------------------+-------+--------+-------------+-------------+--------------+-----------+
+1 row in set (0.00 sec)
+
+mysql> insert into player_assists_goals values(123456, 1, 5, 3, 350);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from player_assists_goals where player_id = 123456;
++-----------+---------------+-------+---------+----------------+
+| Player_id | No_of_Matches | Goals | Assists | Minutes_Played |
++-----------+---------------+-------+---------+----------------+
+|    123456 |             1 |     5 |       3 |            350 |
++-----------+---------------+-------+---------+----------------+
+1 row in set (0.00 sec)
+
+mysql> notee;

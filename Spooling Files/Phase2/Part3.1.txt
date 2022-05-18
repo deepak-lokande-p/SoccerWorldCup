@@ -1,0 +1,24 @@
+mysql> SELECT Host_city 
+    -> FROM Match_results 
+    -> GROUP BY Host_city
+    -> ORDER BY COUNT(Host_city) DESC;
++----------------+
+| Host_city      |
++----------------+
+| Brasilia       |
+| Rio De Janerio |
+| Sao Paulo      |
+| Salvador       |
+| Belo Horizonte |
+| Fortaleza      |
+| Recife         |
+| Porto Alegre   |
+| Natal          |
+| Cuiaba         |
+| Manaus         |
+| Curitiba       |
+| Ahmedabad      |
++----------------+
+13 rows in set (0.00 sec)
+
+mysql> notee;

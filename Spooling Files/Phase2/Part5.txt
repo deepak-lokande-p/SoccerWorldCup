@@ -1,0 +1,15 @@
+mysql> alter table player_cards drop constraint player_cards_ibfk_1;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table player_cards add constraint player_cards_ibfk_1 foreign key(Player_id) references players (Player_id);
+Query OK, 164 rows affected (0.06 sec)
+Records: 164  Duplicates: 0  Warnings: 0
+
+mysql> delete from players where player_id = 298664;
+ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails (`soccer`.`player_cards`, CONSTRAINT `player_cards_ibfk_1` FOREIGN KEY (`Player_id`) REFERENCES `players` (`Player_id`))
+mysql> notee;
+
+
+Explanation:
+1. The delete statement violates referential integrity constraint because the parent table record is referenced in the child table

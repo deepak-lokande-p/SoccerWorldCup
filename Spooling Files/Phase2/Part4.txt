@@ -1,0 +1,14 @@
+mysql> insert into Country values('England', 53.5, 1, 'Roy Hodgson');
+ERROR 1062 (23000): Duplicate entry 'England' for key 'country.PRIMARY'
+mysql> insert into Country values(null, 53.5, 1, 'Roy Hodgson');
+ERROR 1048 (23000): Column 'Country_Name' cannot be null
+mysql> insert into players values(555555, 'Deepak Prakash', 'Deepak', 'Prakash', '1992-05-26', 'New Zealand', 185, 'RCB', 'Midfielder', 4, True);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`soccer`.`players`, CONSTRAINT `players_ibfk_1` FOREIGN KEY (`Country`) REFERENCES `country` (`Country_Name`) ON DELETE SET NULL ON UPDATE CASCADE)
+mysql> notee;
+
+
+
+Explanation:
+1. In the first Insert statement, it violates primary key constraint. There is already a record with England as primary key in Country table
+2. In second Insert statement, it violates not null constraint
+3. In third Insert statement, it violates Foreign Key Constraint where the foreign key reference record is not present in the parent table.
